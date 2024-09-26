@@ -15,6 +15,7 @@ int main()
 
     //TEST CASE 2
     ClapTrap claptrap("Bot");
+    ClapTrap bot = claptrap;
 
     std::cout << "\nInitial state: \n" << std::endl;
     std::cout << "Name: " << claptrap.getName() << std::endl;
@@ -23,11 +24,12 @@ int main()
     std::cout << "Damage: " << claptrap.getDamage() << std::endl;
     std::cout << std::endl;
 
-
+    ClapTrap nob("lol");
+    nob = claptrap;
     // Perform an attack
     claptrap.attack("Target1");
 
-    claptrap.takeDamage(5);
+    claptrap.takeDamage(0);
 
     claptrap.beRepaired(3);
 

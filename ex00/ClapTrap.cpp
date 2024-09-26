@@ -1,47 +1,71 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : name(name), health(10), energy(10), damage(0)
+ClapTrap::ClapTrap() : _name("ClapTrap"), _health(10), _energy(10), _damage(0)
 {
-    std::cout << ELECTRIC_BLUE << "ClapTrap consrtuctor called" << RESET << std::endl;
+    std::cout << ELECTRIC_BLUE << this->_name << " ClapTrap default consrtuctor called" << RESET << std::endl;
 };
 
-ClapTrap::~ClapTrap() {
-    std::cout << SLATE_GRAY << "ClapTrap deconstructor called" << std::endl;
+ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _damage(0)
+{
+    std::cout << ELECTRIC_BLUE << this->_name << " ClapTrap parameter default consrtuctor called" << RESET << std::endl;
+};
+
+ClapTrap::ClapTrap(const ClapTrap &copy) :_name(copy._name), _health(copy._health), _energy(copy._energy), _damage(copy._damage)
+{
+    std::cout << GREEN << this->_name << " ClapTrap copy consrtuctor called" << RESET << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
+{
+    if (this != &obj)
+    {
+        this->_name = obj._name;
+        this->_damage = obj._damage;
+        this->_energy = obj._energy;
+        this->_health = obj._health;
+        std::cout << YELLOW << this->_name << " called the copy assignment operator" << RESET << std::endl;
+    }
+    return *this;
+}
+
+ClapTrap::~ClapTrap()
+{
+    std::cout << RED << "ClapTrap deconstructor called" << std::endl;
 };
 
 void ClapTrap::setDamage(int val)
 {
-    this->damage = val;
+    this->_damage = val;
 }
 
 void ClapTrap::setEnergy(int val)
 {
-    this->energy = val;
+    this->_energy = val;
 }
 
 void ClapTrap::setHealth(int val)
 {
-    this->health = val;
+    this->_health = val;
 }
 
 std::string ClapTrap::getName() const
 {
-    return this->name;
+    return this->_name;
 }
 
 int ClapTrap::getHealth() const
 {
-    return this->health;
+    return this->_health;
 }
 
 int ClapTrap::getEnergy() const
 {
-    return this->energy;
+    return this->_energy;
 }
 
 int ClapTrap::getDamage() const
 {
-    return this->damage;
+    return this->_damage;
 }
 
 void ClapTrap::attack(const std::string &target)
@@ -64,8 +88,8 @@ void ClapTrap::takeDamage(unsigned int amount)
     if (hp - amount < 0)
         hp = 0;
     setHealth(hp);
-    std::cout << DEEP_PURPLE << getName() 
-    << " now has: " << getHealth() << " health points, after the attack of " << ELECTRIC_BLUE << amount << " damge points\n";
+    std::cout << DEEP_PURPLE << getName()
+              << " now has: " << getHealth() << " health points, after the attack of " << ELECTRIC_BLUE << amount << " damge points\n";
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -77,7 +101,7 @@ void ClapTrap::beRepaired(unsigned int amount)
         int repair = getHealth() + amount;
         setEnergy(getEnergy() - 1);
         setHealth(repair);
-        std::cout << LAVENDER << getName() << " now has: " 
-        << getHealth() << " health points, after the recovery of " << ELECTRIC_BLUE << amount << " health points\n";
+        std::cout << LAVENDER << getName() << " now has: "
+                  << getHealth() << " health points, after the recovery of " << ELECTRIC_BLUE << amount << " health points\n";
     }
 }
