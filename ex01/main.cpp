@@ -42,6 +42,8 @@ int main(void)
     // << ", Energy: " << human.getEnergy() << ", Damage: " << human.getDamage() << std::endl;
 
     //TEST CASE 3
+    ScavTrap obj("robo");
+    robo = obj;
     while (robo.getEnergy() != 0)
     {
         robo.attack("Joe");
