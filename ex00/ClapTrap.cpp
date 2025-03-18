@@ -82,10 +82,11 @@ void ClapTrap::attack(const std::string &target)
         std::cout << "No Energy left" << std::endl;
 }
 
+//might have to static_cast amount
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    int hp = getHealth() - amount;
-    if (hp - amount < 0)
+    int hp = getHealth() - (amount);
+    if (hp < 0)
         hp = 0;
     setHealth(hp);
     std::cout << DEEP_PURPLE << getName()

@@ -1,30 +1,39 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + " clap_name"), ScavTrap(name), FragTrap(name), _name(name)
+DiamondTrap::DiamondTrap() : ClapTrap("DiamondTrap clap_name"), ScavTrap(_name), FragTrap(_name)
 {
-    std::cout << MAGENTA << "DiamonTrap" << RESET << " constructor called" << std::endl;
+    std::cout << MAGENTA << "DiamonTrap default " << RESET << " constructor called" << std::endl;
     setHealth(FragTrap::getHealth());
     setEnergy(ScavTrap::getEnergy());
     setDamage(FragTrap::getDamage());
 }
 
-DiamondTrap::~DiamondTrap() {}
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + " clap_name"), ScavTrap(name), FragTrap(name), _name(name)
+{
+    std::cout << MAGENTA << "DiamonTrap" << RESET << " name constructor called" << std::endl;
+    setHealth(FragTrap::getHealth());
+    setEnergy(ScavTrap::getEnergy());
+    setDamage(FragTrap::getDamage());
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
+{
+    if (this != &copy)
+    {
+        ClapTrap::operator=(copy); // no need to set just call base member operator which will do the job
+        std::cout << DEEP_PURPLE << this->getName() << " copy asignment operator FragTrap called" << std::endl;
+    }
+    return *this;
+}
+
+DiamondTrap::~DiamondTrap()
+{
+     std::cout << DEEP_PURPLE << "DiamondTrap deconstructor called" << std::endl;
+}
 
 void DiamondTrap::attack(const std::string &name)
 {
-    if (getEnergy() > 0 && getDamage() -  getHealth() > 0)
-    {
-        std ::cout << "DiamondTrap " << MAGENTA << _name << RESET
-                << " has just attacked" << ELECTRIC_BLUE
-                << name << RESET << " causing" << getDamage()
-                << " damage points !" << std::endl;
-        setEnergy(getEnergy() - 1);
-    }
-    else if (getEnergy() <= 0)
-        std::cout << RED << "No energy to perform attack !\n";
-    else
-        std::cout << RED << "This attack has caused all hp to be below 0\n";
-    
+    ScavTrap::attack(name);
 }
 
 std::string DiamondTrap::getClname()

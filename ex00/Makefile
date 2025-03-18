@@ -5,7 +5,7 @@ SRCS = 	main.cpp ClapTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGZ) -g -c $< -o $@
 
 all: $(NAME)

@@ -1,11 +1,11 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("ClapTrap"), _health(10), _energy(10), _damage(0)
+ClapTrap::ClapTrap() : _name("ClapTrap"), _health(100), _energy(50), _damage(20)
 {
     std::cout << ELECTRIC_BLUE << this->_name << " ClapTrap default consrtuctor called" << RESET << std::endl;
 };
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _damage(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _health(100), _energy(50), _damage(20)
 {
     std::cout << ELECTRIC_BLUE << this->_name << " ClapTrap name parameter default consrtuctor called" << RESET << std::endl;
 };
@@ -110,7 +110,7 @@ void ClapTrap::takeDamage(unsigned int amount)
     else
     {
         int hp = getHealth() - amount;
-        if (hp - amount < 0)
+        if (hp < 0)
             hp = 0;
         setHealth(hp);
         std::cout << DEEP_PURPLE << getName()

@@ -2,17 +2,17 @@
 
 ScavTrap::ScavTrap() : ClapTrap("ScavTrap", 100, 50, 20)
 {
-    std::cout << DEEP_PURPLE << this->getName() << "ScavTrap default construtcor called" << RESET << std::endl;
+    std::cout << DEEP_PURPLE << this->getName() << " ScavTrap default construtcor called" << RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)
 {
-    std::cout << DEEP_PURPLE << this->getName() << "ScavTrap default name paramter constructor called" << RESET << std::endl;
+    std::cout << DEEP_PURPLE << this->getName() << " ScavTrap default name paramter constructor called" << RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) // No need to set member variables explicitly as they are already copied by the base class copy constructor
 {
-    std::cout << DEEP_PURPLE << this->getName() << "ScavTrap copy constructor called" << RESET << std::endl;
+    std::cout << DEEP_PURPLE << this->getName() << " ScavTrap copy constructor called" << RESET << std::endl;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
@@ -37,7 +37,7 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::attack(const std::string &target)
 {
-    if (getEnergy() > 0 && getDamage() - getHealth() > 0)
+    if (getEnergy() > 0 && getHealth() > 0)
     {
         std::cout << "ScavTrap " << DEEP_PURPLE << getName()
                   << RESET << " attacks " << ELECTRIC_BLUE << target << RESET << " doing "

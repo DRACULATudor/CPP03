@@ -2,6 +2,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <cstdlib>
 
 #define RESET "\033[0m"                // def
 #define SLATE_GRAY "\033[38;5;240m"    // Dark Slate Gray
@@ -14,14 +15,17 @@
 
 class ClapTrap
 {
-private:
+protected:
     std::string _name;
-    int health;
-    int energy;
-    int damage;
-
+    int _health;
+    int _energy;
+    int _damage;
 public:
+    ClapTrap();
     ClapTrap(std::string name);
+    ClapTrap(const ClapTrap &copy);
+    ClapTrap(std::string name, int health, int energy, int damage);
+    ClapTrap &operator=(const ClapTrap &obj);
     ~ClapTrap();
 
     void attack(const std::string &target);
@@ -31,7 +35,9 @@ public:
     int getHealth() const;
     int getEnergy() const;
     int getDamage() const;
-    void setHealth(int val);
-    void setEnergy(int val);
-    void setDamage(int val);
+    void setName(std::string name);
+    void setHealth(int val) ;
+    void setEnergy(int val) ;
+    void setDamage(int val) ;
 };
+

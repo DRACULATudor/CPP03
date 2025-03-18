@@ -14,7 +14,7 @@ int main()
 //     human.beRepaired(2);
 
     //TEST CASE 2
-    ClapTrap claptrap("Bot");
+    ClapTrap claptrap("Jhonn");
     ClapTrap bot = claptrap;
 
     std::cout << "\nInitial state: \n" << std::endl;
@@ -27,7 +27,7 @@ int main()
     ClapTrap nob("lol");
     nob = claptrap;
     // Perform an attack
-    claptrap.attack("Target1");
+    claptrap.attack("No one");
 
     claptrap.takeDamage(0);
 
