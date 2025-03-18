@@ -11,12 +11,8 @@ This project is part of the **C++ Modules** at **42 School**, focusing on **inhe
     Constructors and Destructors in Derived Classes
     Virtual Functions (Introduction to Polymorphism)
 
-
 ## Compilation
 
-### Clone the repository:
-``
-Compile the project:
 ```
 make
 ```
@@ -26,7 +22,8 @@ c++ -Wall -Wextra -Werror -std=c++98 *.cpp -o program
 ```
 Run the program:
 ```
-./program
+./exec_name(check Makefile)
+
 ```
 ## Usage
 ```
