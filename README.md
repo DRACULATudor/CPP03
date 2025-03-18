@@ -12,13 +12,10 @@ This project is part of the **C++ Modules** at **42 School**, focusing on **inhe
     Virtual Functions (Introduction to Polymorphism)
 
 
-## Installation & Compilation
+## Compilation
 
 ### Clone the repository:
-```bash
-git clone https://github.com/your-username/cpp-module-03.git
-cd cpp-module-03
-```
+``
 Compile the project:
 ```
 make
